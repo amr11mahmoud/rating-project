@@ -1,0 +1,19 @@
+.searchResultWrapper {
+  padding: 0px;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+.Filter {
+  background-color: green;
+  display: none;
+}
+
+.ProductsList {
+  background-color: transparent;
+}
+@media (min-width: 992px) {
+  .Filter {
+    display: flex;
+  }
+}

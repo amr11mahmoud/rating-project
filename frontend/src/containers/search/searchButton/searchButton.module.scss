@@ -1,0 +1,45 @@
+@import "../../../styles/variables";
+
+.searchButton {
+  border: 0px solid transparent;
+  position: absolute;
+  background-color: $primaryColor;
+  color: $dark;
+  width: 12vh;
+  padding: 5px;
+  right: 2%;
+  top: 15%;
+  font-size: 13px;
+  cursor: pointer;
+  a {
+    color: $light;
+    display: block;
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 100px) {
+  .searchButton {
+    width: 15vh;
+    padding: 3px;
+    top: 11.5%;
+    font-size: 14px;
+    right: 0.8%;
+  }
+  .searchButton:hover {
+    background-color: $dark;
+    color: $light;
+    border-bottom: 4px solid $primaryColor;
+  }
+}
+
+@media (min-width: 500px) {
+  .searchButton {
+    font-size: 16px;
+  }
+  .searchButton:hover {
+    background-color: $dark;
+    color: $light;
+    border-bottom: 4px solid $primaryColor;
+  }
+}

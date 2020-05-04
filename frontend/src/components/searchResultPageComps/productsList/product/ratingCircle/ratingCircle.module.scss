@@ -1,0 +1,16 @@
+.ratingCircle {
+  position: relative;
+  margin-top: 10px;
+}
+
+.ratingText {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-11px) translateY(-27px);
+}
+
+.paragrah {
+  transform: translateY(-10px);
+  font-weight: 600;
+}

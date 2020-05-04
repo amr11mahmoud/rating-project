@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.menu_vertical {
+  background-color: red;
+}
+
+.menu_horizontal {
+  display: none;
+  ul {
+    border: 1px solid $gray;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0px;
+    display: inline-flex;
+    list-style-type: none;
+    width: 100%;
+    justify-content: center;
+    -webkit-box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.04);
+    -moz-box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.04);
+  }
+  li {
+    color: $dark;
+    padding: 0px 15px;
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+  }
+  li:hover {
+    border-left: 2px solid $primaryColor;
+    border-right: 2px solid $primaryColor;
+    background-color: $dark;
+    color: $light;
+  }
+}
+
+@media (min-width: 1081px) {
+  .menu_horizontal {
+    display: block;
+  }
+}

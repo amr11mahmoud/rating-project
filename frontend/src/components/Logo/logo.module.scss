@@ -1,0 +1,38 @@
+.HomeLogo {
+  width: 200px;
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+}
+
+@media (min-width: 600px) {
+  .HomeLogo {
+    width: 250px;
+  }
+}
+
+@media (min-width: 900px) {
+  .HomeLogo {
+    width: 350px;
+  }
+}
+
+@media (max-width: 400px) and (max-height: 700px) {
+  .HomeLogo {
+    width: 200px;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+  }
+}
+
+.SearchPageLogo {
+  width: 200px;
+  padding-top: 5%;
+}
+
+@media (min-width: 900px) {
+  .SearchPageLogo {
+    padding-top: 2%;
+  }
+}
