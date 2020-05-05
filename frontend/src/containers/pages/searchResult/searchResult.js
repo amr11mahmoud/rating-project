@@ -11,17 +11,12 @@ import * as SearchActions from "../../../store/index";
 class searchResult extends Component {
   UNSAFE_componentWillMount() {
     const index = window.location.href.search("q=");
-    const searchQuery = window.location.href.substring(
-      index + 2,
-      window.location.href.length
-    );
-
-    fetch(`http://localhost:8000/api/search/${searchQuery}`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.props.onFetchingData(data);
-        console.log("component will mount searchResult");
-      });
+    const searchQuery = window.location.href
+      .substring(index + 2, window.location.href.length)
+      .replace(/%20/g, " ");
+    if (this.props.searchResult.length === 0) {
+      this.props.onSearchResultHandler(searchQuery);
+    }
   }
 
   render() {
@@ -38,7 +33,7 @@ class searchResult extends Component {
         <Menu cordienate="horizontal" />
         <SortByAndShowing searchQuery={this.props.searchQuery} />
 
-        <SearchResultWrapper products={this.props.products} />
+        <SearchResultWrapper products={this.props.searchResult} />
       </React.Fragment>
     );
   }
@@ -46,14 +41,15 @@ class searchResult extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products.productsArray,
     searchQuery: state.search.searchQuery,
+    searchResult: state.search.searchResult,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchingData: (data) => dispatch(SearchActions.setSearchResualt(data)),
+    onSearchResultHandler: (searchQuery) =>
+      dispatch(SearchActions.searchResult(searchQuery)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(searchResult);

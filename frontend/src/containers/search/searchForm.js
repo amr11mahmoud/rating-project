@@ -11,31 +11,19 @@ class SearchForm extends Component {
     this.state = {
       buttonDisabled: true,
     };
-    this.onsearchHandler = this.onsearchHandler.bind(this);
+    this.onSearchHandler = this.onSearchHandler.bind(this);
   }
 
-  // ***** commented because i already fetch data when search result page mount *****
-  fetchProductsHandler = (searchQuery) => {
-    fetch(`http://localhost:8000/api/search/${searchQuery}`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.props.onSearchSubmit(data);
-      });
-  };
-
-  onClickHandler = (searchQuery, clickable) => {
+  onClickHandler = (searchQuery) => {
+    this.props.onSearchResultHandler(searchQuery);
     this.props.onResetSearchSuggetion();
-    if (clickable) {
-      this.fetchProductsHandler(searchQuery);
-    }
   };
 
   // handle autocomplete
-  onsearchHandler = (e) => {
+  onSearchHandler = (e) => {
     const value = e.target.value;
-
     if (value.length === 0) {
-      this.props.onSaveSearchSuggestions([], value);
+      this.props.onResetSearchSuggetion();
       this.setState({
         ...this.state,
         buttonDisabled: true,
@@ -45,19 +33,12 @@ class SearchForm extends Component {
         ...this.state,
         buttonDisabled: false,
       });
-
-      fetch("http://localhost:8000/api/autocomplete/" + value + "/")
-        .then((res) => res.json())
-        .then((data) => this.props.onSaveSearchSuggestions(data, value))
-        .catch((e) => {
-          console.log(e);
-        });
+      this.props.onAutoCompleteHandler(value);
     }
   };
 
   onSubmitHandler(e) {
     e.preventDefault();
-    this.onClickHandler(this.props.searchQuery, false);
     this.props.history.push(`search?q=${this.props.searchQuery}`);
   }
 
@@ -66,19 +47,15 @@ class SearchForm extends Component {
 
     if (this.props.searchSuggestions !== []) {
       let updatedArray = [];
-      if (this.props.searchSuggestions.length < 5) {
-        updatedArray = this.props.searchSuggestions;
-      } else {
+      updatedArray = this.props.searchSuggestions;
+
+      if (this.props.searchSuggestions.length > 5) {
         updatedArray = this.props.searchSuggestions.splice(0, 5);
       }
-
       autoComplete = updatedArray.map((suggest, index) => {
         const searchTitle = suggest.title.substring(0, 18);
         return (
-          <li
-            key={index}
-            onClick={() => this.onClickHandler(searchTitle, true)}
-          >
+          <li key={index} onClick={() => this.onClickHandler(searchTitle)}>
             <Link to={`search?q=${searchTitle}`}>{searchTitle}</Link>
           </li>
         );
@@ -95,7 +72,7 @@ class SearchForm extends Component {
           <div className={classes.autocomplete}>
             <input
               onChange={(e) => {
-                this.onsearchHandler(e);
+                this.onSearchHandler(e);
               }}
               type="text"
               placeholder="What are you looking for ?"
@@ -107,14 +84,11 @@ class SearchForm extends Component {
               </div>
             ) : null}
             <SearchButton
-              click={this.props.onResetSearchSuggetion}
+              click={() => this.onClickHandler(this.props.searchQuery)}
               disabled={this.state.buttonDisabled}
             />
           </div>
         </form>
-        {this.redirect ? (
-          <Redirect to={`search?q=${this.props.searchQuery}`} />
-        ) : null}
       </div>
     );
   }
@@ -122,18 +96,19 @@ class SearchForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    searchSuggestions: state.search.searchSuggestions,
     searchQuery: state.search.searchQuery,
+    searchSuggestions: state.search.searchSuggestions,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSaveSearchSuggestions: (data, value) =>
-      dispatch(SearchActions.saveSearchSuggestions(data, value)),
+    onAutoCompleteHandler: (searchQuery) =>
+      dispatch(SearchActions.autoComplete(searchQuery)),
+    onSearchResultHandler: (searchQuery) =>
+      dispatch(SearchActions.searchResult(searchQuery)),
     onResetSearchSuggetion: () =>
       dispatch(SearchActions.resetSearchSuggetion()),
-    onSearchSubmit: (data) => dispatch(SearchActions.setSearchResualt(data)),
   };
 };
 

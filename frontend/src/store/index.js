@@ -1,2 +1,5 @@
-export { saveSearchSuggestions, resetSearchSuggetion } from "./actions/search";
-export { setSearchResualt } from "./actions/products";
+export {
+  resetSearchSuggetion,
+  autoComplete,
+  searchResult,
+} from "./actions/search";

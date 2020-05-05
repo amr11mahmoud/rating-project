@@ -29,8 +29,8 @@ def productsList(request, title):
 
 
 @api_view(['GET'])
-def productDetail(request,pk):
-    products = Product.objects.get(id=pk)
+def productDetail(request,title):
+    products = Product.objects.get(title__exact=title)
     serializer = ProductSerlizer(products, many=False)
 
     return Response(serializer.data)
