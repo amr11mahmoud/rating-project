@@ -39,8 +39,8 @@ export default class ratingCircle extends React.Component {
             cy={radius}
           />
         </svg>
-        <span className={classes.ratingText}>{rating.toFixed(1)}</span>
-        <p className={classes.paragrah}>out of 10</p>
+        <h2 className={classes.ratingText}>{rating.toFixed(1)}</h2>
+        <p className={classes.paragrah} style={{fontSize:'20px'}}>out of 10</p>
       </div>
     );
   }

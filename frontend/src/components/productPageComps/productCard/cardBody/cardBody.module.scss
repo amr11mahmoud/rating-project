@@ -1,0 +1,75 @@
+@import "../../../../styles/variables";
+
+.cardBody {
+  border-left: none;
+  padding: 10px;
+  height: 100%;
+  p{
+    font-size: 10px;
+    
+  }
+  h6{
+    font-size: 12px;
+  }
+  .buyItFromSouq, .buyItFromJumia{
+    p{
+      background-color: #0000FF	;
+      margin-left: 20px;
+      color: $light;
+      padding:10px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+  .buyItFromJumia{
+    p{
+      background-color: #f68b1e;
+    }
+  }
+  .noOfReviews{
+    color: $light;
+    p{
+      font-size: 15px;
+      background-color: black;
+      padding: 10px 0px;
+      text-align: center;
+
+    }
+  }
+
+}
+
+.productRating {
+  text-align: center;
+  margin: auto;
+  p{
+    transform: translateX(0px);
+    font-size: 20px;
+  }
+}
+
+@media (min-width:992px){
+.cardBody{
+    border-left: 1px solid $gray;
+    align-items: flex-start;
+  text-align: start;
+  p{
+  font-size: 12px;
+    padding:  0px 0px 0px 20px;}
+
+  h6{
+  font-size: 14px;
+  letter-spacing: .5px;
+  padding: 20px 0px 0px 20px;}
+  }
+
+  .productRating {
+  text-align: center;
+  margin: auto;
+  p{
+    transform: translateX(-10px);
+  }
+}
+
+}
+

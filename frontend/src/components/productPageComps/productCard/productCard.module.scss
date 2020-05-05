@@ -1,0 +1,13 @@
+@import "../../../styles//variables";
+
+.productCard {
+  border: 1px solid $gray;
+  margin: auto;
+  max-width: 90%;
+}
+
+@media (min-width: 600px) {
+  .productCard {
+    max-width: 90%;
+  }
+}

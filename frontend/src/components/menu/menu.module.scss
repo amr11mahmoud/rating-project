@@ -25,14 +25,14 @@
     font-size: 12px;
     text-decoration: none;
     cursor: pointer;
-    border-left: 2px solid transparent;
-    border-right: 2px solid transparent;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
   }
   li:hover {
-    border-left: 2px solid $primaryColor;
-    border-right: 2px solid $primaryColor;
-    background-color: $dark;
-    color: $light;
+    border-bottom: 1px solid $primaryColor;
+    // border-right: 2px solid $primaryColor;
+    // background-color: $dark;
+    color: $dark;
   }
 }
 

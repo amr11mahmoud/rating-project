@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classes from "./searchForm.module.scss";
 import { connect } from "react-redux";
 import * as SearchActions from "../../store/index";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import SearchButton from "../search/searchButton/searchButton";
 
 class SearchForm extends Component {
@@ -39,7 +39,7 @@ class SearchForm extends Component {
 
   onSubmitHandler(e) {
     e.preventDefault();
-    this.props.history.push(`search?q=${this.props.searchQuery}`);
+    this.props.history.push(`/search?q=${this.props.searchQuery}`);
   }
 
   render() {
@@ -56,7 +56,7 @@ class SearchForm extends Component {
         const searchTitle = suggest.title.substring(0, 18);
         return (
           <li key={index} onClick={() => this.onClickHandler(searchTitle)}>
-            <Link to={`search?q=${searchTitle}`}>{searchTitle}</Link>
+            <Link to={`/search?q=${searchTitle}`}>{searchTitle}</Link>
           </li>
         );
       });

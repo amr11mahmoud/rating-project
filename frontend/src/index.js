@@ -7,11 +7,11 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import searchReducer from "./store/reducers/search";
-import productsReducer from "./store/reducers/products";
+import productReducer from "./store/reducers/product";
 
 const rootReducer = combineReducers({
   search: searchReducer,
-  products: productsReducer,
+  product: productReducer,
 });
 
 const composeEnhancers =

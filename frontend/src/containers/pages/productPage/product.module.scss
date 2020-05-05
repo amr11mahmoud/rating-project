@@ -1,0 +1,17 @@
+.CenterLogo {
+  text-align: center;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+  a:hover{
+    border: none;
+
+  }
+}
+@media (min-width: 1080px) {
+  .CenterLogo {
+    text-align: left;
+    padding-left: 2vw;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+  }
+}

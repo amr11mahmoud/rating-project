@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Navbar from "../../../components/Navbar/navbar";
-import SearchForm from "../../search/searchForm";
+
 import classes from "./searchResult.module.scss";
 import Logo from "../../../components/Logo/logo";
 import Menu from "../../../components/menu/menu";
 import SearchResultWrapper from "../../../components/searchResultPageComps/searchResultWrapper/searchResultWrapper";
 import SortByAndShowing from "../../../components/searchResultPageComps/sortByAndShowing/sortByAndShowing";
+import NavBarNotHome from "../../../components/Navbar/NavbarNotHome/navbarNotHome";
 import * as SearchActions from "../../../store/index";
-class searchResult extends Component {
+class SearchResult extends Component {
   UNSAFE_componentWillMount() {
     const index = window.location.href.search("q=");
     const searchQuery = window.location.href
@@ -22,11 +22,7 @@ class searchResult extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar Buttons="searchResult">
-          <div className={classes.SearchForm}>
-            <SearchForm />
-          </div>
-        </Navbar>
+        <NavBarNotHome />
         <div className={`container-fluid ${classes.CenterLogo}`}>
           <Logo />
         </div>
@@ -52,4 +48,4 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(SearchActions.searchResult(searchQuery)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(searchResult);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);
