@@ -1,0 +1,11 @@
+@import '../../../styles/variables';
+
+.commentsWrapper{
+  max-width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  border: 1px solid $gray;
+  padding: 2vh;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,8 +1,11 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   product: [],
+  product_comments: [],
   fetchingProduct: false,
+  fetchingComments: false,
   error: null,
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +22,20 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCHING_PRODUCT_FAILED:
       return Object.assign({}, state, {
         fetchingProduct: false,
+        error: action.error,
+      });
+    case actionTypes.FETCHING_COMMENTS_STARTED:
+      return Object.assign({}, state, {
+        fetchingComments: true,
+      });
+    case actionTypes.FETCHING_COMMENTS_SUCCEED:
+      return Object.assign({}, state, {
+        fetchingComments: false,
+        product_comments: action.comments,
+      });
+    case actionTypes.FETCHING_COMMENTS_FAILED:
+      return Object.assign({}, state, {
+        fetchingComments: false,
         error: action.error,
       });
 

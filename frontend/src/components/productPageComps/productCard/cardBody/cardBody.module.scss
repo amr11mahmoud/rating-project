@@ -12,6 +12,7 @@
     font-size: 12px;
   }
   .buyItFromSouq, .buyItFromJumia{
+    padding-left: 0px;
     p{
       background-color: #0000FF	;
       margin-left: 20px;
@@ -70,6 +71,7 @@
     transform: translateX(-10px);
   }
 }
-
-}
+.buyItFromSouq, .buyItFromJumia{
+  margin-left: 15px;
+}}
 

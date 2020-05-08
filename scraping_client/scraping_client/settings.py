@@ -23,7 +23,7 @@ NEWSPIDER_MODULE = 'scraping_client.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+USER_AGENT = 'Mozilla/5.0 (compatible; DuckDuckGo-Favicons-Bot/1.0; +http://duckduckgo.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False

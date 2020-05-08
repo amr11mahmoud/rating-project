@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import ImageSlider from "./imageSlider/imageSlider";
 import CardBody from "./cardBody/cardBody";
 import classes from "./productCard.module.scss";
 import * as productActions from '../../../store/index'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 class ProductCard extends Component {
-  
-  render(props){
+
+  render(props) {
     return (
       <React.Fragment>
         <div className={`container ${classes.productCard}`}>
@@ -22,7 +22,7 @@ class ProductCard extends Component {
       </React.Fragment>
     );
   }
-  
+
 }
 
 const mapStateToProps = (state) => {
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchingProduct: (searchQuery) =>
-      dispatch(productActions.fetshProduct(searchQuery)),
+      dispatch(productActions.fetchProduct(searchQuery)),
   };
 };
 

@@ -16,6 +16,7 @@ export default class Home extends Component {
         </div>
         <Illustration />
         <Footer />
+        
       </React.Fragment>
     );
   }
